@@ -60,4 +60,4 @@ But, there will be many cases when your distribution is highly skewed or inflate
 
 In such cases, you may want to use more robust statistical tests such as Mann-Whitney U Test, or the zero-inflated regression model.
 
-![alt text](https://https://github.com/dimSot88/AB_Testing_Notes/experiment_duration.png?raw=true)
+![alt text](https://github.com/dimSot88/AB_Testing_Notes/blob/main/experiment_duration.png?raw=true)

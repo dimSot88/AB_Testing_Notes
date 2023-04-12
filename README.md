@@ -30,3 +30,34 @@ Even though there's no statistical significance, the upper bound exceeding the p
 This is what I mean by you never just want to look at the lift and statistical significance alone. Sure, you can launch this with certain degree of confidence that your change is better than the old. However, the lower bound of the CI is lower than MDE.
 
 To be more certain that your test brings practical significance, consider re-running with increased power.
+
+
+𝟭. 𝗡𝗼𝘁 𝗮𝗹𝗹 𝘀𝗶𝗴𝗻𝗶𝗳𝗶𝗰𝗮𝗻𝗰𝗲 𝗹𝗲𝘃𝗲𝗹 (𝗮𝗹𝗽𝗵𝗮) 𝗶𝘀 𝟬.𝟬𝟱
+
+A naive assumption in AB testing is to set the alpha as 0.05 because it's "industry practice". But, that's not always the case. 
+
+Setting the alpha boils down to risk-reward analysis based on the type of experiment you are conducting.
+
+As alpha == the Type 1 error rate (the probability of false rejection of Ho), you have to assess the risk of falsely rejecting the Ho and launching the test version.
+
+If you believe that the risk is too costly in terms of business $, you can mitigate the risk by reducing alpha to 0.01.
+
+You also need to account for multivariate testing - A/B/n, when the family-wise error rate inflates. You adjust the alpha with techniques such as Bonferroni or Sidek correction.
+
+𝟮. 𝗢𝗯𝘀𝗲𝗿𝘃𝗮𝘁𝗶𝗼𝗻 𝘁𝗶𝗺𝗲 != 𝗘𝘅𝗽𝗲𝗿𝗶𝗺𝗲𝗻𝘁𝗮𝘁𝗶𝗼𝗻 𝗧𝗶𝗺𝗲
+
+As an interview coach, I see that clients mistakenly believe that, if an experiment is run for 2 weeks, then a user is observed for 2 weeks. That's not the case.
+
+Suppose you run an AB experiment for a ranking algorithm on Amazon. Your KPI is the average spend per user. You run a 14-day experiment to realize a statistical power of 80%. A user enters the experiment on day 1, then you would observe the user's total spend for 24 hours, not for the entire two weeks.
+
+So in this case, the user observation time is 24 hours while the experimentation time to collect the required # of users (the sample size) is 2 weeks.
+
+𝟯. 𝗗𝗼𝗻'𝘁 𝗮𝘀𝘀𝘂𝗺𝗲 𝘁𝗵𝗮𝘁 𝘆𝗼𝘂 𝘄𝗶𝗹𝗹 𝗯𝗲 𝘂𝘀𝗶𝗻𝗴 𝗧-𝗧𝗲𝘀𝘁𝘀 𝗮𝗹𝗹 𝘁𝗵𝗲 𝘁𝗶𝗺𝗲
+
+In real-life, distributions are messy. It's not always normally distributed as assumed by T-Tests. Slight skewness is okay, as long as your sample size is large given CLT. 
+
+But, there will be many cases when your distribution is highly skewed or inflated with zeros. Under such condition, the statistical power of the T-Tests would be reduced. 
+
+In such cases, you may want to use more robust statistical tests such as Mann-Whitney U Test, or the zero-inflated regression model.
+
+
